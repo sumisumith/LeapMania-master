@@ -45,7 +45,7 @@ public class LeapBehaviourScript : MonoBehaviour {
 				
 	    //オキュラス合体用座標変換
 
-        /*float theta = 2 * Mathf.PI/8;
+        float theta = 2 * Mathf.PI/8;
         normalizedPosition.y = -normalizedPosition.y;
         float Y = Mathf.Cos(theta) * normalizedPosition.y - Mathf.Sin(theta) * normalizedPosition.z;
         float Z = Mathf.Sin(theta) * normalizedPosition.y + Mathf.Cos(theta) * normalizedPosition.z;
@@ -63,7 +63,7 @@ float X = Mathf.Cos(beta) * normalizedPosition.x - Mathf.Sin(beta) * normalizedP
 normalizedPosition.x = X;
         normalizedPosition.y = Y + 8;
         normalizedPosition.z = -Z;
-        *///合体用終了 
+        //合体用終了 
         unityFinger.transform.position = ToVector3( normalizedPosition );
       }
     }
