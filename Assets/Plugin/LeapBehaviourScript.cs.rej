@@ -1,0 +1,10 @@
+diff a/Assets/Plugin/LeapBehaviourScript.cs b/Assets/Plugin/LeapBehaviourScript.cs	(rejected hunks)
+@@ -43,7 +43,7 @@
+         normalizedPosition *= 10;
+         //normalizedPosition.z = -normalizedPosition.z;
+ 				
+-	    //オキュラス合体用座標変換
++	    //�I�L�����X���̗p���W�ϊ�
+ 
+         float theta = 2 * Mathf.PI/8;
+         normalizedPosition.y = -normalizedPosition.y;

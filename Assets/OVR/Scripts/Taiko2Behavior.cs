@@ -1,21 +1,22 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Taiko2Behavior : MonoBehaviour {
 	
 	public bool taiko2Flag;
-	private const int maxCollisionCounter = 30;
-	private int collisionCounter = maxCollisionCounter;
+	private const int maxCollisionCounter = 10;
+	private int collisionCounter;
 	
 	// Use this for initialization
 	void Start () {
 		taiko2Flag = false;
+		collisionCounter = maxCollisionCounter;
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//Debug.Log(collisionCounter);
+		//Debug.Log("taiko2 flag:" + taiko2Flag);
 		if (taiko2Flag && collisionCounter > 0) {
 			collisionCounter--;
 		}
@@ -28,8 +29,11 @@ public class Taiko2Behavior : MonoBehaviour {
 	
 	void OnCollisionEnter(Collision other)
 	{
-		Debug.Log("TAIKO2 Collision!!");
-		taiko2Flag = true;
+		if (other.gameObject.tag == "Sphere2")
+		{
+			Debug.Log("TAIKO2 behavior Collision!!");
+			taiko2Flag = true;
+		}
 	}
 }
 
