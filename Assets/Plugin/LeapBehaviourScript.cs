@@ -42,7 +42,7 @@ public class LeapBehaviourScript : MonoBehaviour {
         Vector normalizedPosition = interactionBox.NormalizePoint(leapFinger.TipPosition );
         normalizedPosition *= 10;
         //normalizedPosition.z = -normalizedPosition.z;
-				
+
 	    //オキュラス合体用座標変換
 
         float theta = 2 * Mathf.PI/8;
@@ -63,7 +63,7 @@ float X = Mathf.Cos(beta) * normalizedPosition.x - Mathf.Sin(beta) * normalizedP
 normalizedPosition.x = X;
         normalizedPosition.y = Y + 8;
         normalizedPosition.z = -Z;
-        //合体用終了 
+        //合体用終了
         unityFinger.transform.position = ToVector3( normalizedPosition );
       }
     }
@@ -84,6 +84,7 @@ normalizedPosition.x = X;
   void OnCollisionEnter(Collision other)
   {
 		Color color;
+		Debug.Log("Leap COLLISION!!" + other.gameObject.tag);
         if (other.gameObject.tag == "taiko1" || other.gameObject.tag == "taiko2" || other.gameObject.tag == "taiko3")
         {
 			if (collisionFlag && collisionCounter > 0) {
@@ -92,11 +93,11 @@ normalizedPosition.x = X;
 				collisionFlag = false;
 				collisionCounter = maxCollisionCounter;
 			}
-			Debug.Log("TAIKO!!");
+			Debug.Log("Leap Script TAIKO!!");
 			color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
 			other.gameObject.renderer.material.SetColor("_Color", color);
 		} else {
-	Debug.Log("COLLISION!!");
+	Debug.Log("other COLLISION!!");
 		//DestroyObject(other.gameObject.GetComponent("Sphere1"));
 		//nodeGenerator.deleteNode();
 	    //var sphere = (Object)GameObject.FindGameObjectWithTag ("Sphere1");
@@ -115,19 +116,19 @@ normalizedPosition.x = X;
 			other.gameObject.renderer.material.SetColor("_Color", color);
 			collisionFlag = true;
 			
-			// sumi追加
-			Debug.Log("S IN!!");
-			count.GetComponent<Counter>().countUpScore();
-			Debug.Log("S OUT!!");
+			// sumi
+			//Debug.Log("S IN!!");
+			//count.GetComponent<Counter>().countUpScore();
+			//Debug.Log("S OUT!!");
 			
 			if (other.gameObject.GetComponent<Taiko1Behavior>().taiko1Flag == true)
 			{
 				Singleton<SoundPlayer>.instance.playSE( "se001" );
 				
-				// sumi追加
-				/*Debug.Log("S IN!!");
+				// sumi
+				Debug.Log("S IN!!");
 				count.GetComponent<Counter>().countUpScore();
-				Debug.Log("S OUT!!");*/
+				Debug.Log("S OUT!!");
 			}
 		} else if (other.gameObject.tag == "taiko2") {
 			Debug.Log("TAIKO2 Exit!!");
@@ -135,7 +136,7 @@ normalizedPosition.x = X;
 			other.gameObject.renderer.material.SetColor("_Color", color);
 			collisionFlag = true;
 			
-			// sumi追加
+			// sumi
 			Debug.Log("S IN!!");
 			count.GetComponent<Counter>().countUpScore();
 			Debug.Log("S OUT!!");
@@ -144,7 +145,7 @@ normalizedPosition.x = X;
 			{
 				Singleton<SoundPlayer>.instance.playSE( "se001" );
 				
-				/*// sumi追加
+				/*// sumi
 				Debug.Log("S IN!!");
 				count.GetComponent<Counter>().countUpScore();
 				Debug.Log("S OUT!!");*/
@@ -155,7 +156,7 @@ normalizedPosition.x = X;
 			other.gameObject.renderer.material.SetColor("_Color", color);
 			collisionFlag = true;
 
-			// sumi追加
+			// sumi
 			Debug.Log("S IN!!");
 			count.GetComponent<Counter>().countUpScore();
 			Debug.Log("S OUT!!");			
@@ -164,7 +165,7 @@ normalizedPosition.x = X;
 			{
 				Singleton<SoundPlayer>.instance.playSE( "se001" );
 
-				/*// sumi追加
+				/*// sumi
 				Debug.Log("S IN!!");
 				count.GetComponent<Counter>().countUpScore();
 				Debug.Log("S OUT!!");*/				
